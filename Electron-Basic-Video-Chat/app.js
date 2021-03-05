@@ -13,7 +13,17 @@ let mainWindow;
 
 const createWindow = () => {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600});
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      // Uncomment the next two lines in case you want to set contextIsolation in 'false'
+      // nodeIntegration: true,
+      // contextIsolation: false,
+      // Comment the next line in case you want to set contextIsolation in 'false'
+      preload: path.join(__dirname, 'preload.js'), // use a preload script
+    }
+  });
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
