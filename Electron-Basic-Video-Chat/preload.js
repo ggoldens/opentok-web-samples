@@ -3,8 +3,8 @@ const {
     desktopCapturer
 } = require('electron');
 
-// Expose protected methods that allow the renderer process to use
-// the ipcRenderer without exposing the entire object
+// Expose the desktopCapturer so that the SDK can access to it
+// via window.electron.desktopCapturer
 contextBridge.exposeInMainWorld(
     'electron', {
       desktopCapturer,
